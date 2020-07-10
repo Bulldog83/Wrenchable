@@ -30,7 +30,7 @@ public class WrenchableRegistry {
         Identifier identifier_1 = new Identifier(WrenchableMain.MODID, string_1);
         Identifier identifier_2 = new Identifier(WrenchableMain.MODID, string_2);
         MutableRegistry<T> mutableRegistry_1 = new DefaultedRegistry<>(string_2, RegistryKey.ofRegistry(identifier_1), Lifecycle.stable());
-        return Registry.REGISTRIES.add(identifier_1, mutableRegistry_1);
+        return Registry.REGISTRIES.create(identifier_1, mutableRegistry_1);
     }
 
     public static BlockListener getBlockWrenchable(Block block) {
