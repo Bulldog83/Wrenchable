@@ -1,6 +1,7 @@
 package com.zundrel.wrenchable;
 
 import com.zundrel.wrenchable.block.InstanceListener;
+import com.mojang.serialization.Lifecycle;
 import com.zundrel.wrenchable.block.BlockListener;
 import com.zundrel.wrenchable.block.PropertyListener;
 import com.zundrel.wrenchable.entity.EntityListener;
@@ -14,18 +15,21 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.DefaultedRegistry;
 import net.minecraft.util.registry.MutableRegistry;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryKey;
 
 public class WrenchableRegistry {
-    public static final DefaultedRegistry<BlockListener> BLOCK_LISTENERS = register("block_wrenchable", new DefaultedRegistry<>(""));
-    public static final DefaultedRegistry<InstanceListener> BLOCK_INSTANCE_LISTENERS = register("block_instance_wrenchable", new DefaultedRegistry<>(""));
-    public static final DefaultedRegistry<PropertyListener> PROPERTY_LISTENERS = register("property_wrenchable", new DefaultedRegistry<>(""));
+    public static final DefaultedRegistry<BlockListener> BLOCK_LISTENERS = register("block_wrenchable", "block_listeners");
+    public static final DefaultedRegistry<InstanceListener> BLOCK_INSTANCE_LISTENERS = register("block_instance_wrenchable", "block_instance_listeners");
+    public static final DefaultedRegistry<PropertyListener> PROPERTY_LISTENERS = register("property_wrenchable", "property_listeners");
 
-    public static final DefaultedRegistry<EntityListener> ENTITY_LISTENERS = register("entity_wrenchable", new DefaultedRegistry<>(""));
+    public static final DefaultedRegistry<EntityListener> ENTITY_LISTENERS = register("entity_wrenchable", "entity_listeners");
 
-    public static final DefaultedRegistry<WrenchListener> WRENCH_LISTENERS = register("wrench", new DefaultedRegistry<>(""));
+    public static final DefaultedRegistry<WrenchListener> WRENCH_LISTENERS = register("wrench", "wrench_listeners");
 
-    private static <T, R extends MutableRegistry<T>> R register(String string_1, R mutableRegistry_1) {
+    private static <T, R extends MutableRegistry<T>> R register(String string_1, String string_2) {
         Identifier identifier_1 = new Identifier(WrenchableMain.MODID, string_1);
+        Identifier identifier_2 = new Identifier(WrenchableMain.MODID, string_2);
+        MutableRegistry<T> mutableRegistry_1 = new DefaultedRegistry<>(string_2, RegistryKey.ofRegistry(identifier_1), Lifecycle.stable());
         return Registry.REGISTRIES.add(identifier_1, mutableRegistry_1);
     }
 
