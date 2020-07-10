@@ -2,7 +2,7 @@ package com.zundrel.wrenchable.block.defaults;
 
 import com.zundrel.wrenchable.block.InstanceListener;
 import com.zundrel.wrenchable.WrenchableUtilities;
-import grondag.fermion.modkeys.api.ModKeys;
+import grondag.fermion.modkeys.impl.ModKeysAccess;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.SignBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -22,7 +22,7 @@ public class SignInstanceListener extends InstanceListener {
         Block block = state.getBlock();
         SignBlockEntity blockEntity = (SignBlockEntity) world.getBlockEntity(pos);
 
-        if (ModKeys.isControlPressed(player) && world.getBlockEntity(result.getBlockPos()) instanceof SignBlockEntity) {
+        if (ModKeysAccess.isControlPressed(player) && world.getBlockEntity(result.getBlockPos()) instanceof SignBlockEntity) {
             blockEntity.setEditor(player);
             blockEntity.setEditable(true);
             player.openEditSignScreen((SignBlockEntity) world.getBlockEntity(result.getBlockPos()));

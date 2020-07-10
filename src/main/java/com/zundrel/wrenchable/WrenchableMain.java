@@ -6,7 +6,6 @@ import com.zundrel.wrenchable.block.defaults.*;
 import com.zundrel.wrenchable.config.WrenchableConfig;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.block.BedBlock;
-import net.minecraft.block.entity.BedBlockEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 

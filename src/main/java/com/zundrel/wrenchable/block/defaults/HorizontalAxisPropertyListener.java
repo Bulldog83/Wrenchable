@@ -1,7 +1,7 @@
 package com.zundrel.wrenchable.block.defaults;
 
 import com.zundrel.wrenchable.block.PropertyListener;
-import grondag.fermion.modkeys.api.ModKeys;
+import grondag.fermion.modkeys.impl.ModKeysAccess;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -22,7 +22,7 @@ public class HorizontalAxisPropertyListener extends PropertyListener {
         BlockState state = world.getBlockState(pos);
         Block block = state.getBlock();
 
-        if (ModKeys.isAltPressed(player)) {
+        if (ModKeysAccess.isAltPressed(player)) {
             Direction.Axis axis = Direction.Axis.X;
 
             if (player.getHorizontalFacing() == Direction.NORTH || player.getHorizontalFacing() == Direction.SOUTH)

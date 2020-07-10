@@ -2,7 +2,7 @@ package com.zundrel.wrenchable.block.defaults;
 
 import com.zundrel.wrenchable.block.InstanceListener;
 import com.zundrel.wrenchable.WrenchableUtilities;
-import grondag.fermion.modkeys.api.ModKeys;
+import grondag.fermion.modkeys.impl.ModKeysAccess;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -26,7 +26,7 @@ public class PistonInstanceListener extends InstanceListener {
         Block block = state.getBlock();
 
         if (!state.get(Properties.EXTENDED)) {
-            if (ModKeys.isControlPressed(player) && block == Blocks.STICKY_PISTON) {
+            if (ModKeysAccess.isControlPressed(player) && block == Blocks.STICKY_PISTON) {
                 world.setBlockState(pos, Blocks.PISTON.getDefaultState().with(Properties.FACING, state.get(Properties.FACING)));
                 world.playSound(null, pos, SoundEvents.ENTITY_SLIME_SQUISH, SoundCategory.BLOCKS, 1, 1F);
                 if (!player.isCreative())

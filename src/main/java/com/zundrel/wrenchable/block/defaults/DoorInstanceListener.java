@@ -2,7 +2,7 @@ package com.zundrel.wrenchable.block.defaults;
 
 import com.zundrel.wrenchable.block.InstanceListener;
 import com.zundrel.wrenchable.WrenchableUtilities;
-import grondag.fermion.modkeys.api.ModKeys;
+import grondag.fermion.modkeys.impl.ModKeysAccess;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.DoorBlock;
@@ -23,7 +23,7 @@ public class DoorInstanceListener extends InstanceListener {
         BlockState state = world.getBlockState(pos);
         Block block = state.getBlock();
 
-        if (ModKeys.isControlPressed(player)) {
+        if (ModKeysAccess.isControlPressed(player)) {
             world.setBlockState(pos, state.cycle(Properties.DOOR_HINGE));
             world.updateNeighbor(pos, block, pos);
             return;
